@@ -15,9 +15,23 @@ namespace StableMarriageProblem
 
         public void Match()
         {
-            foreach(Seller currentSeller in _sellers)
+            bool isStable = false;
+
+            // Note: this is not the most performant way to handle this, but it is the most expedient to code.
+            // If performance becomes an issue, we can revisit it.
+            // Depending on team culture and how your team handles stuff like this generally, I would probably add a tech debt item to optimize this
+            // Alternately, I'd do it myself before checkin - but the 4-hour time box is causing me to make this performance tradeoff
+            while (!isStable)
             {
-                currentSeller.SelectBuyer();
+                isStable = true;
+                foreach (Seller currentSeller in _sellers)
+                {
+                    if (currentSeller.RecommendedBuyer == null)
+                    {
+                        currentSeller.SelectBuyer();
+                        isStable = false;
+                    }
+                }
             }
         }
     }
