@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StableMarriageProblem", "StableMarriageProblem\StableMarriageProblem.csproj", "{FFB29051-FB0E-4EEF-8A5E-020D049B0C67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StableMarriageTests", "StableMarriageTests\StableMarriageTests.csproj", "{DFBECF64-286E-413D-8155-ED0E3D8C8B54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FFB29051-FB0E-4EEF-8A5E-020D049B0C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFB29051-FB0E-4EEF-8A5E-020D049B0C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFB29051-FB0E-4EEF-8A5E-020D049B0C67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBECF64-286E-413D-8155-ED0E3D8C8B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBECF64-286E-413D-8155-ED0E3D8C8B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBECF64-286E-413D-8155-ED0E3D8C8B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBECF64-286E-413D-8155-ED0E3D8C8B54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
