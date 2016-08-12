@@ -1,24 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace StableMarriageProblem
 {
     public class Buyer
     {
-        public Seller RecommendedSeller { get; set; }
-        public List<Seller> PreferredSellers { get; set; }
-
-        private int preferencePositionOfCurrentRecommendation = -1;
-
-        internal void Propose()
+        public List<Seller> RecommendedSellers
         {
-            throw new NotImplementedException();
+            get
+            {
+                return _recommendations.GetList();
+            }
+        }
+        public List<Seller> PreferredSellers { get; set; }
+        public int DesiredNumberOfSellers { get; set; }
+
+        private RecommendedSellersList _recommendations;
+
+        public Buyer()
+        {
+            _recommendations = new RecommendedSellersList(this);
         }
 
         internal bool Propose(Seller seller)
         {
             int indexOfNewRecommendedSeller = EvaluateProposal(seller);
-            if (indexOfNewRecommendedSeller != preferencePositionOfCurrentRecommendation)
+            if (indexOfNewRecommendedSeller != -1)
             {
                 AcceptProposal(indexOfNewRecommendedSeller);
                 return true;
@@ -31,12 +37,12 @@ namespace StableMarriageProblem
 
         private int EvaluateProposal(Seller seller)
         {
-            if (RecommendedSeller == null)
+            if (_recommendations.Count < DesiredNumberOfSellers)
             {
                 return PreferredSellers.FindIndex((Seller s) => { return s == seller; });
             }
 
-            for (int i=0; i < preferencePositionOfCurrentRecommendation; i++)
+            for (int i=0; i < _recommendations.IndexOfLeastPreferredSeller; i++)
             {
                 if (PreferredSellers[i] == seller)
                 {
@@ -44,19 +50,17 @@ namespace StableMarriageProblem
                 }
             }
 
-            return preferencePositionOfCurrentRecommendation;
+            return -1;
         }
 
         private void AcceptProposal(int indexOfNewRecommendation)
         {
-            if (RecommendedSeller != null)
+            if (RecommendedSellers.Count == DesiredNumberOfSellers)
             {
-                RecommendedSeller.RecommendedBuyer = null;
+                _recommendations.RemoveLeastPreferredSeller();
             }
 
-            preferencePositionOfCurrentRecommendation = indexOfNewRecommendation;
-            RecommendedSeller = PreferredSellers[indexOfNewRecommendation];
-            RecommendedSeller.RecommendedBuyer = this;
+            _recommendations.AddSeller(indexOfNewRecommendation);
         }
     }
 }

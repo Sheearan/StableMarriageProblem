@@ -1,0 +1,4 @@
+﻿1) I don't verify the inputs.
+	a) Is the number of sellers exactly the number that will satisfy all of the buyers?
+	b) Do each of the preference lists contain each member of the other set exactly once?
+2) The performance of iterating through the whole list until nothing changes is not great
