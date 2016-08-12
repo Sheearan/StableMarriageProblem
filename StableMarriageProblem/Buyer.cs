@@ -13,6 +13,7 @@ namespace StableMarriageProblem
         }
         public List<Seller> PreferredSellers { get; set; }
         public int DesiredNumberOfSellers { get; set; }
+        public string Name { get; set; } // Optional, for printing results
 
         private RecommendedSellersList _recommendations;
 

@@ -6,6 +6,8 @@ namespace StableMarriageProblem
     {
         public Buyer RecommendedBuyer { get; set; }
         public List<Buyer> PreferredBuyers { get; set; }
+        public string Name { get; set; } // Optional, for printing results
+
 
         internal void SelectBuyer()
         {
